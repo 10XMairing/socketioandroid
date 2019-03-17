@@ -31,15 +31,15 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvOut;
 
 
-
-
+        //TODO update your server url after hosting with node localhost:port (i use ngrok - ubuntu) and change this variable
+        private final String serverurl = "";
 
     private com.github.nkzawa.socketio.client.Socket mSocket;
 
     {
         try {
             Log.d(TAG, "instance initializer: initializing socket");
-            mSocket = IO.socket("http://26f3571f.ngrok.io/");
+            mSocket = IO.socket(serverurl);
         }catch (URISyntaxException e){
             e.printStackTrace();
             Log.d(TAG, "instance initializer: "+e.getMessage());

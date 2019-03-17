@@ -1,12 +1,12 @@
 {
   "name": "socket-demo",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple socket.io server",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon app.js"
+    "dev": "node index.js"
   },
-  "author": "",
+  "author": "Tenx",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",

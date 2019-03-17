@@ -32,4 +32,4 @@ implementation 'com.github.nkzawa:socket.io-client:0.3.0'
 * socket.io
 * express
 
-Code referenced from [socket.io chat](https://socket.io/get-started/chat/)
+Code referenced from [socket.io chat](https://socket.io/get-started/chat/) and [socket.io android](https://socket.io/blog/native-socket-io-and-android/)

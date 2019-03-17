@@ -10,7 +10,14 @@ or
 node index.js
 ```
 
-* In Android's MainActivity update the serverurl after hosting it with node. lookup how to connect android with localhost. I use ngrok for ubuntu.
+In Android's MainActivity update the **serverurl** after hosting it with node. lookup how to connect android with localhost. I use [ngrok](https://ngrok.com/download) for ubuntu.
+
+in linux use this command to host your localhost at port 3000 at a random url(see terminal) 
+```
+ngrok http 3000
+```
+
+You can also connect to your localhost by connecting your android with the same wifi with the computer and use the ip address:port
 
 
 libraries used

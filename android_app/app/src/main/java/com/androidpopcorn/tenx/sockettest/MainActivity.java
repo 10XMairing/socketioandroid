@@ -36,13 +36,20 @@ public class MainActivity extends AppCompatActivity {
 
     private com.github.nkzawa.socketio.client.Socket mSocket;
 
+
+    // initialize the socket with server url
     {
         try {
             Log.d(TAG, "instance initializer: initializing socket");
+
             mSocket = IO.socket(serverurl);
+
         }catch (URISyntaxException e){
+
             e.printStackTrace();
+
             Log.d(TAG, "instance initializer: "+e.getMessage());
+
         }
     }
 
@@ -60,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         tvOut = findViewById(R.id.tv_out);
 
 
-
+//subscribe to event 'chat message' to recieve the emitted data and attatch a listener to update the view
         mSocket.on("chat message", onNewMessage);
 
         btnButton.setOnClickListener(new View.OnClickListener() {
@@ -70,12 +77,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+// connect to socket
         mSocket.connect();
 
     }
 
 
     private void attemptSend() {
+
+        //get text from the two edit texts and emit it as a json object with an event 'chat message'
+        //anyone subscribed to 'chat message' will recieve this jsonobject
+
+
         String message = etMessage.getText().toString().trim();
         String name = etName.getText().toString();
         if (TextUtils.isEmpty(message) || TextUtils.isEmpty(name)) {
@@ -99,7 +113,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void call(final Object... args) {
             Log.d(TAG, "call: OnNewMessage called");
-            
+
+//            run this on the ui thread to update the view
             
             runOnUiThread(new Runnable() {
                 @Override
@@ -118,12 +133,16 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    //disconnect from the socket when app is closed
     @Override
     protected void onDestroy() {
         super.onDestroy();
         mSocket.disconnect();
         mSocket.off("chat message", onNewMessage);
     }
+
+
+    //function to update the text view
 
     private void addMessage(String username, String message) {
         String out = tvOut.getText().toString() + "\n" + username +" : " + message;
